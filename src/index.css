@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply font-inter; /* Using Tailwind's utility */
+}
+
+h3 {
+  @apply font-semibold text-[15px];
+}
+/* Hide scrollbar forward & backward buttons */
+.custom-scrollbar::-webkit-scrollbar-button {
+  display: none;
+}
+
+/* Set vertical scrollbar width & hide horizontal scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 2px;  /* Vertical scrollbar width */
+  height: 0px; /* Horizontal scrollbar won't show */
+}
+
+/* Scrollbar Thumb (Draggable part) */
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: lightGray;
+}
+
+/* Hide horizontal scrollbar completely */
+.custom-scrollbar {
+  overflow-x: hidden;
+}
