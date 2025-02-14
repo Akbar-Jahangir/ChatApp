@@ -1,9 +1,8 @@
 export interface UserCardProps {
-  id?:string
+  id?: string;
   profileImageSrc?: string;
-  profileImageSize?: string;
+  profileImageSize?: "sm" | "md";
   userName: string;
-  MessageText?: string;
   onlineStatus?: boolean;
   className?: string;
 }

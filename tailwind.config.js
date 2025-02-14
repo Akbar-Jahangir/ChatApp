@@ -13,6 +13,7 @@ export default {
         gray: "#959595",
         lightGray: "#CDCDCD",
         lightSlate: "#BABABA",
+        slate:"#D9D9D9"
       },
     },
   },

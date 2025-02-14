@@ -85,15 +85,14 @@ const SignUp: React.FC = () => {
           <Button
             type="submit"
             className="bg-primary p-1 text-lg font-semibold rounded-md text-white w-full flex justify-center"
-          >
-            Sign Up
-          </Button>
+            labelText="Sign Up"
+         />
         </form>
         <div>
           <span>Already have an account?</span>{" "}
           <Button
             type="button"
-            children="Sign In"
+            labelText="Sign In"
             className="text-primary font-semibold text-xl"
             onClick={() => navigate("signIn")}
           />

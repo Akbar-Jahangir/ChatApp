@@ -3,31 +3,26 @@ import { UserCardProps } from "../../interfaces/UserCard.interface";
 import BlankImg from "../../assets/Images/blankImg.png";
 import { OnlineIconSvg } from "../Svgs";
 
-export const UserCard: React.FC<UserCardProps> = ({
+export const UserProfileCard: React.FC<UserCardProps> = ({
   userName = "John Doe",
   profileImageSrc,
   onlineStatus,
-  MessageText,
   className,
   profileImageSize,
-  
+
 }) => {
   return (
     <>
       <div className="flex justify-between">
-        <div className={className}>
+        <div className={`${className} flex items-center gap-2`}>
           <img
             src={profileImageSrc || BlankImg}
             alt="profilePic"
-            className={profileImageSize || `w-[45px] h-[45px]`}
+            className={`${profileImageSize === "sm" ? "h-[45px] w-[45px]" : profileImageSize === "md" ? "h-[105px] w-[105px]" : "h-[45px] w-[45px]"} rounded-full`}
           />
           <div>
-            <h3>{userName}</h3>
-            {MessageText && (
-              <p className="text-gray text-xs max-w-[130px] line-clamp-2">
-                {MessageText}
-              </p>
-            )}
+            <p className="text-[15px] font-semibold ">{userName}</p>
+
           </div>
           {onlineStatus && <OnlineIconSvg />}
         </div>

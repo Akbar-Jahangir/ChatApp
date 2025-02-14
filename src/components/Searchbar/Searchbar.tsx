@@ -15,9 +15,7 @@ export const Searchbar: React.FC = () => {
         onSubmit={handleSubmit}
         className="w-[90%] flex gap-x-2 px-3 rounded-full bg-white items-center py-2"
       >
-        <Button type="submit">
-          <SearchIconSvg />
-        </Button>
+        <Button type="submit" icon={<SearchIconSvg />} />
         <Input
           value={search}
           placeholder="Search Here..."

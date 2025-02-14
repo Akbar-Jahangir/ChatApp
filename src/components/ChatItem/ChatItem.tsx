@@ -21,6 +21,7 @@ export const ChatItem: React.FC<ChatItemProps> = ({
         />
 
         <div className="w-[100%]">
+
           <div className="flex justify-between w-full">
             <p className="text-primary font-semibold text-[14px]">{userName}</p>
             <p className="text-lightSlate text-[9px] self-center">
@@ -32,7 +33,7 @@ export const ChatItem: React.FC<ChatItemProps> = ({
             <p className="text-gray text-[9px] max-w-[142px] line-clamp-2">
               {messageText}
             </p>
-            <p className="text-lightSlate text-[9px]">
+            <div className="text-lightSlate text-[9px]">
               {" "}
               {messageStatus === "sent" ? (
                 <span className="bg-lavenderBlue rounded-full w-[15px] h-[15px] flex justify-center items-center">
@@ -45,7 +46,7 @@ export const ChatItem: React.FC<ChatItemProps> = ({
               ) : (
                 ""
               )}
-            </p>
+            </div>
           </div>
         </div>
       </div>

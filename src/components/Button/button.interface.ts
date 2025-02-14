@@ -1,8 +1,10 @@
 import React from "react";
 
 export interface ButtonProps {
-  children: string | React.ReactNode;
+  icon?: React.ReactNode;
+  iconClass?: string;
+  labelText?: string;
   className?: string;
   type: "button" | "submit" | "reset";
-  onClick?:()=> void
+  onClick?: () => void;
 }
