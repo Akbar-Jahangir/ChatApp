@@ -10,22 +10,20 @@ export const Searchbar: React.FC = () => {
     e.preventDefault();
   };
   return (
-    <>
-      <form
-        onSubmit={handleSubmit}
-        className="w-[90%] flex gap-x-2 px-3 rounded-full bg-white items-center py-2"
-      >
-        <Button type="submit" icon={<SearchIconSvg />} />
-        <Input
-          value={search}
-          placeholder="Search Here..."
-          type="search"
-          onChange={(e) => setSearch(e.target.value)}
-          className="w-[90%] focus:outline-none"
-        />
-      </form>
-    </>
+    <form
+      onSubmit={handleSubmit}
+      className="w-[95%] flex gap-x-2 px-3 rounded-full bg-white items-center py-2"
+    >
+      <Button type="submit" icon={<SearchIconSvg />} />
+      <Input
+        value={search}
+        placeholder="Search Here..."
+        type="search"
+        onChange={(e) => setSearch(e.target.value)}
+        className="w-[90%] focus:outline-none"
+      />
+    </form>
+
   );
 };
 
-export default Searchbar;

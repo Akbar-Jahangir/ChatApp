@@ -1,8 +1,8 @@
-export interface UserCardProps {
+export interface ChatUserProps {
   id?: string;
   profileImageSrc?: string;
   profileImageSize?: "sm" | "md";
-  userName: string;
+  userName?: string;
   onlineStatus?: boolean;
   className?: string;
 }

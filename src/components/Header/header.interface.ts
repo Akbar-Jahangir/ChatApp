@@ -1,6 +1,7 @@
-import { UserCardProps } from "../../interfaces/UserCard.interface";
+import { ChatUserProps } from "../../interfaces/userCard.interface";
 
 export interface HeaderProps {
-  userCardInfo:UserCardProps[]
+  ChatUserInfo?: ChatUserProps[];
   actionIcons?: { id: string; icon: React.ReactNode }[];
+  className?:string
 }

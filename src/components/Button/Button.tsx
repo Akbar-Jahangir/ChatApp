@@ -5,7 +5,7 @@ export const Button: React.FC<ButtonProps> = ({
 
   icon,
   iconClass,
-  labelText,
+  btnText,
   className,
   type = "button",
   onClick
@@ -13,7 +13,7 @@ export const Button: React.FC<ButtonProps> = ({
   return (
     <button type={type} className={className} onClick={onClick}>
       {icon && <div className={iconClass}>{icon}</div>}
-      <p>{labelText}</p>
+      <p>{btnText}</p>
     </button>
   );
 };

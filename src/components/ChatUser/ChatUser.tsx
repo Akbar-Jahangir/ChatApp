@@ -1,9 +1,9 @@
 import React from "react";
-import { UserCardProps } from "../../interfaces/UserCard.interface";
 import BlankImg from "../../assets/Images/blankImg.png";
 import { OnlineIconSvg } from "../Svgs";
+import { ChatUserProps } from "../../interfaces/userCard.interface";
 
-export const UserProfileCard: React.FC<UserCardProps> = ({
+export const ChatUser: React.FC<ChatUserProps> = ({
   userName = "John Doe",
   profileImageSrc,
   onlineStatus,
