@@ -1,4 +1,3 @@
 export interface ContextProviderProps {
-    children: React.ReactNode;
-  }
-  
+  children: React.ReactNode;
+}

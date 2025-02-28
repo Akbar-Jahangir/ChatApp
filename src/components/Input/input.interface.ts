@@ -1,8 +1,10 @@
-export interface InputProps{
-    placeholder?:string;
-    className?:string;
-    type:string;
-    value?:string;
+export interface InputProps {
+    placeholder?: string;
+    className?: string;
+    type: string;
+    value?: string;
     accept?: string;
-    onChange:(e: React.ChangeEvent<HTMLInputElement>)=>void
+    capture?: "user" | "environment";
+    multiple?: boolean;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }

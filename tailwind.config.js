@@ -10,10 +10,10 @@ export default {
         smokeWhite: "#F0F0F0",
         primary: "#4399FF",
         lavenderBlue: "#DCE8FF",
-        gray: "#959595",
+        gray: "#959590",
         lightGray: "#CDCDCD",
+        slate:"#D9D9D9",
         lightSlate: "#BABABA",
-        slate:"#D9D9D9"
       },
     },
   },

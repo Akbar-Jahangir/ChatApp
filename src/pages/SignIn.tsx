@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Input } from "../components/Input";
 import { Button } from "../components/Button";
 import { useNavigate } from "react-router-dom";
-import useAuth from "../hooks/useUserDB";
+import useDatabase from "../hooks/useDatabase";
 
 const SignIn: React.FC = () => {
   const [email, setEmail] = useState<string>("");
@@ -10,9 +10,9 @@ const SignIn: React.FC = () => {
   const [isEmail, setIsEmail] = useState<boolean>(true);
   const [isPassword, setIsPassword] = useState<boolean>(true);
 
-  const {loginUser}=useAuth()
+  const { loginUser } = useDatabase()
   const navigate = useNavigate()
-  
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -22,62 +22,66 @@ const SignIn: React.FC = () => {
     } else {
       setIsEmail(true);
     }
-    if (password.trim() == "" || password.trim().length < 6) {
+    if (password.trim() == "") {
       setIsPassword(false);
       return;
     } else {
       setIsPassword(true);
     }
-    loginUser(email,password,navigate)
+    loginUser(email, password, navigate)
   };
 
   return (
-    <>
-      <div className="w-full h-screen flex flex-col justify-center items-center space-y-4">
-        <form
-          onSubmit={handleSubmit}
-          className="bg-smokeWhite w-[90%] max-w-[380px] shadow-xl p-4 rounded space-y-4 font-inter flex flex-col items-center py-12"
-        >
-          <p className="text-3xl font-semibold text-primary mb-4">Sign In</p>
+    <div className="w-full h-screen flex flex-col justify-center items-center space-y-4">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-smokeWhite w-[90%] max-w-[380px] shadow-xl p-4 rounded space-y-4 font-inter flex flex-col items-center py-12"
+      >
+        <p className="text-3xl font-semibold text-primary mb-4">Sign In</p>
 
-          <div className="w-full">
-            <Input
-              type="email"
-              placeholder="Email"
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
-              className={`form-input ${!isEmail ? "error-input" : ""
-                }`}
-            />
-            {!isEmail && (
-              <p className="error-text">provide your email address</p>
-            )}
-          </div>
-          <div className="w-full">
-            <Input
-              type="password"
-              placeholder="Password"
-              onChange={(e) => setPassword(e.target.value)}
-              value={password}
-              className={`form-input ${!isPassword ? "error-input" : ""
-                }`} />
-            {!isPassword && (
-              <p className="error-text">provide your password</p>
-            )}
-          </div>
-          <Button
-            type="submit"
-            className="bg-primary p-1 text-lg font-semibold rounded text-white w-full flex justify-center"
-            btnText="Sign In"
+        <div className="w-full">
+          <Input
+            type="email"
+            placeholder="Email"
+            onChange={(e) => {
+              setEmail(e.target.value)
+              setIsEmail(true)
+            }}
+            value={email}
+            className={`form-input ${!isEmail ? "error-input" : ""
+              }`}
           />
-        </form>
-        <div>
-          <span>Don't have an account?</span>{" "}
-          <Button type="button" className="text-primary font-semibold text-xl" onClick={() => navigate("signUp")} btnText="Sign Up" />
-
+          {!isEmail && (
+            <p className="error-text">provide your email address</p>
+          )}
         </div>
+        <div className="w-full">
+          <Input
+            type="password"
+            placeholder="Password"
+            onChange={(e) => {
+              setPassword(e.target.value)
+              setIsPassword(true)
+            }}
+            value={password}
+            className={`form-input ${!isPassword ? "error-input" : ""
+              }`} />
+          {!isPassword && (
+            <p className="error-text">please provide your password</p>
+          )}
+        </div>
+        <Button
+          type="submit"
+          className="bg-primary p-1 text-lg font-semibold rounded text-white w-full flex justify-center"
+          btnText="Sign In"
+        />
+      </form>
+      <div>
+        <span>Don't have an account?</span>{" "}
+        <Button type="button" className="text-primary font-semibold text-xl" onClick={() => navigate("/")} btnText="Sign Up" />
+
       </div>
-    </>
+    </div>
   );
 };
 

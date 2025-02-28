@@ -1,6 +1,5 @@
 export interface ChatMessageProps {
-  sentMessage?: string;
-  receivedMessage?: string;
-  profileImageSrc?: string;
-  
+  messageContent: string;
+  senderId: string;
+  picUrl?: string;
 }

@@ -1,15 +1,25 @@
-
-
-import React from "react";
+import React, { useContext } from "react";
 import { Button } from "../Button";
 import { ChatItem } from "../ChatItem";
-import { ChatUser } from "../ChatUser";
 import { Header } from "../Header";
 import { Searchbar } from "../Searchbar";
 import { ChatIconSvg, EditIconSvg, FavoriteIconSvg, ImageIconSvg, MP3IconSvg, PdfIconSvg, ProfileIconSvg, VideoChatIconSvg, VideoIconSvg } from "../Svgs";
-import { SidebarProps } from "./sidebar.interface";
+import { SenderContext, RecipientContext } from "../../contexts/ChatContext";
+import { sidebarProps } from "./sidebar.interface";
+import BlankImg from "../../assets/Images/blankImg.png";
 
-export const Sidebar: React.FC<SidebarProps> = ({ receiverInfo, ChatItemInfo, senderName, senderImageSrc }) => {
+
+export const Sidebar: React.FC<sidebarProps> = ({ alignment }) => {
+  const { sendername,
+    senderId,
+    senderPicUrl} = useContext(SenderContext);
+  const { recipientname, recipientPicUrl } = useContext(RecipientContext);
+
+  const userInfo = {
+    userId: senderId,
+    profilePicUrl: senderPicUrl,
+    username: sendername,
+  };
   const mediaBtnsData = [
     {
       id: 20,
@@ -33,38 +43,36 @@ export const Sidebar: React.FC<SidebarProps> = ({ receiverInfo, ChatItemInfo, se
     },
   ]
 
+
   return (
 
-    <div className="w-[23%] flex flex-col items-center pt-[29px] bg-smokeWhite h-screen space-y-3.5">
-      {receiverInfo ?
+    <div className="w-[25%] flex flex-col items-center  bg-smokeWhite space-y-3.5 h-screen">
+      {alignment === "left" ?
         <>
-          <div className="w-[90%] flex flex-col items-center justify-center space-y-3.5">
-            <Header ChatUserInfo={receiverInfo} actionIcons={[{ id: "1", icon: <EditIconSvg /> }]} className="w-[95%]" />
+          <div className="w-[90%] flex flex-col items-center justify-center space-y-3.5 pt-[15px]">
+            <Header
+              userInfo={userInfo}
+              actionIcons={[{ id: "1", icon: <EditIconSvg /> }]} />
             <Searchbar />
             <span className="h-[1px] w-[90%] bg-lightGray"></span>
           </div>
-
-
           <div className="custom-scrollbar w-[95%] flex flex-col items-center space-y-3.5 overflow-y-scroll overflow-x-hidden">
-            {ChatItemInfo?.map((chatItem) => (
-              <ChatItem key={chatItem.id} {...chatItem} />
-            ))}
-          </div></> :
-        <div className="flex flex-col items-center space-y-2 2xl:space-y-8">
-          <div className="w-full flex justify-center 2xl:mt-[42px]">
+            <ChatItem />
+          </div>
+        </>
+        :
+        <div className="flex flex-col items-center space-y-4 2xl:space-y-8">
+          <div className="w-full flex justify-center mt-[30px] 2xl:mt-[42px]">
             <Searchbar />
           </div>
-
-          <ChatUser
-            userName={senderName}
-            profileImageSrc={senderImageSrc}
-            profileImageSize="md"
-            className="flex flex-col"
-          />
+          <div className="flex flex-col items-center">
+            <img src={recipientPicUrl || BlankImg} alt="profilePic" className="w-[105px] h-[105px] rounded-full object-cover" />
+            <p className="font-semibold text-[15px] mt-1">{recipientname}</p>
+          </div>
           <div className="flex gap-x-3">
             <Button type="button" btnText="Chat" icon={<ChatIconSvg />} className=" text-[11px]" iconClass="chatting-btn" />
             <span className="h-[99px] border border-slate"></span>
-            <Button type="button" btnText="Chat" icon={<VideoChatIconSvg />} className=" text-[11px]" iconClass="chatting-btn" />
+            <Button type="button" btnText="Video Call" icon={<VideoChatIconSvg />} className=" text-[11px]" iconClass="chatting-btn" />
           </div>
 
           <div className="flex justify-between w-[90%]">

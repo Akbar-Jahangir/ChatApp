@@ -1,16 +1,14 @@
 import React, { Suspense, lazy } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { ChatProvider } from "../contexts/ChatContext";
 import SignUp from "../pages/SignUp";
-import Home from "../pages/Home";
-import { AuthProvider } from "../contexts/AuthContext";
+import SignIn from "../pages/SignIn";
 
-// Lazy load components for code splitting
-
-const SignIn = lazy(() => import("../pages/SignIn"));
+const Chat = lazy(() => import("../pages/Chat"))
 
 export const AppRoutes: React.FC = () => {
   return (
-    <AuthProvider>
+    <ChatProvider>
       <Router>
         <Suspense
           fallback={
@@ -20,10 +18,10 @@ export const AppRoutes: React.FC = () => {
           <Routes>
             <Route path="/" element={<SignUp />} />
             <Route path="signIn" element={<SignIn />} />
-            <Route path="home" element={<Home />} />
+            <Route path="chat" element={<Chat />} />
           </Routes>
         </Suspense>
       </Router>
-    </AuthProvider>
+    </ChatProvider>
   );
 };

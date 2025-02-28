@@ -1,5 +1,5 @@
 import React from "react";
-import { FavoriteIconProps } from "./favoriteIcon.Props";
+import { FavoriteIconProps } from "./favoriteIcon.interface";
 
 export const EditIconSvg: React.FC = () => {
   return (

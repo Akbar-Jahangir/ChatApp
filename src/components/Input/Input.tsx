@@ -1,4 +1,3 @@
-import React from "react";
 import { InputProps } from "./input.interface";
 
 export const Input: React.FC<InputProps> = ({
@@ -7,7 +6,9 @@ export const Input: React.FC<InputProps> = ({
   onChange,
   className,
   value,
-  accept
+  accept,
+  capture,
+  multiple,
 }) => {
   return (
     <input
@@ -16,7 +17,9 @@ export const Input: React.FC<InputProps> = ({
       type={type}
       onChange={onChange}
       value={value}
-      accept={accept} 
+      accept={accept}
+      capture={capture}
+      multiple={multiple}
     />
   );
 };

@@ -1,7 +1,7 @@
-export interface signUpProps{
-    userId?:string
-    name:string
-    password?:string
-    email:string
-    profilePicUrl?:string
+export interface signUpProps {
+  userId: string;
+  username: string;
+  profilePicUrl?: string;
+  password: string;
+  email: string;
 }
